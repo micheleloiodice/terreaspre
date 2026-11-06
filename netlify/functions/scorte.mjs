@@ -1,11 +1,10 @@
 // TERRE ASPRE — scorte attuali per il sito (GET /api/scorte). Solo lettura.
 
-import { apriStore, lettoreFile, leggiScorte } from "../lib/scorte.mjs";
+import { apriStore, leggiFileBase, leggiScorte } from "../lib/scorte.mjs";
 
 export default async (req) => {
-  const origin = process.env.URL || new URL(req.url).origin;
   try {
-    const scorte = await leggiScorte(await apriStore(), lettoreFile(origin));
+    const scorte = await leggiScorte(await apriStore(), leggiFileBase);
     return new Response(JSON.stringify(scorte), {
       headers: { "content-type": "application/json", "cache-control": "no-store" }
     });

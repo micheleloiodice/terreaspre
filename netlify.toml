@@ -2,6 +2,10 @@
   publish = "sito"
   functions = "netlify/functions"
 
+[functions]
+  # esbuild include sito/scorte.json dentro le funzioni (import in netlify/lib/scorte.mjs)
+  node_bundler = "esbuild"
+
 [[headers]]
   for = "/*"
   [headers.values]

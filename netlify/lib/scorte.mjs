@@ -2,6 +2,8 @@
 // L'archivio vivo sta in Netlify Blobs. sito/scorte.json è la base: se il suo campo "versione" è più alto
 // di quello in archivio, il file vince e sovrascrive i numeri (serve per rifornimenti e correzioni a mano).
 
+import BASE from "../../sito/scorte.json";
+
 const CHIAVE = "prodotti";
 
 // Prodotti senza scorte proprie: ogni pezzo venduto consuma questi pezzi di base.
@@ -24,14 +26,9 @@ export async function apriStore() {
   return getStore({ name: "scorte", consistency: "strong" });
 }
 
-// Legge /scorte.json dal sito pubblicato
-export function lettoreFile(origin) {
-  return async () => {
-    const r = await fetch(`${origin}/scorte.json`, { headers: { "cache-control": "no-cache" } });
-    if (!r.ok) throw new Error(`scorte.json: ${r.status}`);
-    return r.json();
-  };
-}
+// sito/scorte.json incluso nella funzione al momento della pubblicazione (esbuild, vedi netlify.toml):
+// non dipende dal sito raggiungibile via rete, che può essere protetto da password.
+export const leggiFileBase = async () => BASE;
 
 const daFile = f => ({
   versione: Number(f.versione) || 0,

@@ -1,7 +1,7 @@
 // TERRE ASPRE — riceve gli eventi di Stripe e scala le scorte a ogni pagamento riuscito.
 // Netlify Function su /api/stripe-webhook. Variabile d'ambiente: STRIPE_WEBHOOK_SECRET (whsec_...).
 
-import { apriStore, lettoreFile, leggiCarrello, scalaScorte, verificaFirma } from "../lib/scorte.mjs";
+import { apriStore, leggiFileBase, leggiCarrello, scalaScorte, verificaFirma } from "../lib/scorte.mjs";
 
 const EVENTI_PAGATI = ["checkout.session.completed", "checkout.session.async_payment_succeeded"];
 
@@ -29,9 +29,8 @@ export default async (req) => {
     return new Response("Firma non valida", { status: 400 });
   }
 
-  const origin = process.env.URL || new URL(req.url).origin;
   try {
-    await gestisciEvento(JSON.parse(corpo), await apriStore(), lettoreFile(origin));
+    await gestisciEvento(JSON.parse(corpo), await apriStore(), leggiFileBase);
   } catch (e) {
     console.error("Webhook:", e.message);
     return new Response("Errore", { status: 500 }); // Stripe riprova da solo

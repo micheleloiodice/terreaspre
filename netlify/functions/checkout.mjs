@@ -2,7 +2,7 @@
 // Gira come Netlify Function su /api/checkout. Usa l'API REST di Stripe e le scorte vive in Netlify Blobs.
 // Variabile d'ambiente richiesta: STRIPE_SECRET_KEY (sk_test_... in prova, sk_live_... in produzione).
 
-import { apriStore, lettoreFile, leggiScorte, espandi } from "../lib/scorte.mjs";
+import { apriStore, leggiFileBase, leggiScorte, espandi } from "../lib/scorte.mjs";
 
 const DURATA_SESSIONE_SEC = 30 * 60; // il minimo di Stripe: limita il tempo fra controllo scorte e pagamento
 
@@ -111,7 +111,7 @@ export default async (req) => {
 
   let scorte;
   try {
-    scorte = await leggiScorte(await apriStore(), lettoreFile(origin));
+    scorte = await leggiScorte(await apriStore(), leggiFileBase);
   } catch (e) {
     console.error("Scorte non leggibili:", e.message);
     return json({ errore: "Non riusciamo a verificare la disponibilità. Riprova tra poco." }, 503);
