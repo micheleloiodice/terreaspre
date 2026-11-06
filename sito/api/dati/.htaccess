@@ -1,8 +1,0 @@
-# Scorte vive, pagamenti già registrati e richieste dai moduli: mai leggibili dal web.
-<IfModule mod_authz_core.c>
-  Require all denied
-</IfModule>
-<IfModule !mod_authz_core.c>
-  Order allow,deny
-  Deny from all
-</IfModule>

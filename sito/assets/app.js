@@ -325,7 +325,7 @@ function renderFoto(fig) {
 }
 
 /* ---------- Scorte: esaurito e ultimi pezzi ---------- */
-// Le scorte vive arrivano da /api/scorte.php (scalate a ogni pagamento); in anteprima locale si usa scorte.json.
+// Le scorte vive arrivano da /api/scorte (scalate a ogni pagamento); in anteprima locale si usa /scorte.json.
 // Se non si legge nessuno dei due, il sito non blocca nulla: il controllo vero lo fa il checkout.
 let SCORTE = null;
 const UNITA = {
@@ -341,7 +341,7 @@ const UNITA = {
 const componenti = id => PRODUCTS[id]?.componenti || { [id]: 1 };
 
 async function caricaScorte() {
-  for (const url of ["/api/scorte.php", "scorte.json"]) {
+  for (const url of ["/api/scorte", "scorte.json"]) {
     try {
       const r = await fetch(url, { cache: "no-store" });
       if (!r.ok) continue;
@@ -587,7 +587,7 @@ function renderCart() {
   box.querySelector("[data-checkout]").addEventListener("click", checkout);
 }
 
-// Manda codici e quantità a /api/checkout.php, che crea la sessione Stripe e restituisce l'URL di pagamento.
+// Manda codici e quantità alla funzione /api/checkout, che crea la sessione Stripe e restituisce l'URL di pagamento.
 async function checkout(e) {
   const btn = e.currentTarget;
   const msg = document.querySelector("[data-checkout-msg]");
@@ -596,7 +596,7 @@ async function checkout(e) {
   msg.textContent = "";
   try {
     const items = Cart.items().map(({ id, qty }) => ({ id, qty }));
-    const res = await fetch("/api/checkout.php", {
+    const res = await fetch("/api/checkout", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ items })
@@ -614,16 +614,16 @@ async function checkout(e) {
 }
 
 /* ---------- Moduli dimostrativi ---------- */
-// I moduli con data-modulo vanno ad api/modulo.php: invio in background, risposta nella pagina.
+// I moduli con data-netlify vengono raccolti da Netlify Forms: invio in background, risposta nella pagina.
 function initForms() {
-  document.querySelectorAll("form[data-modulo]").forEach(f => f.addEventListener("submit", async e => {
+  document.querySelectorAll("form[data-netlify]").forEach(f => f.addEventListener("submit", async e => {
     e.preventDefault();
     const msg = f.querySelector(".form-msg");
     const btn = f.querySelector("button[type=submit]");
     const say = (text, cls) => { if (msg) { msg.textContent = text; msg.className = "form-msg " + cls; } };
     btn.disabled = true;
     try {
-      const res = await fetch(f.action, {
+      const res = await fetch("/", {
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(new FormData(f)).toString()
@@ -634,10 +634,9 @@ function initForms() {
         say(f.dataset.ok || "Fatto. Ti scriviamo quando è il momento.", "ok");
         return;
       }
-      const data = await res.json().catch(() => ({}));
-      say(data.errore || ([404, 405, 501].includes(res.status)
+      say([404, 405, 501].includes(res.status)
         ? "I moduli funzionano solo sul sito pubblicato, non nell'anteprima locale."
-        : "Invio non riuscito. Riprova tra poco."), "err");
+        : "Invio non riuscito. Riprova tra poco.", "err");
     } catch {
       say("Connessione assente. Controlla la rete e riprova.", "err");
     }
