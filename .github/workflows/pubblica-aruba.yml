@@ -1,0 +1,22 @@
+# Carica la cartella sito/ sull'hosting Aruba via FTP. Parte solo a mano: Actions → Pubblica su Aruba → Run workflow.
+# Segreti da impostare in GitHub (Settings → Secrets and variables → Actions): FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+# Variabile facoltativa FTP_DIR: cartella del sito sul server, con la barra finale (vuota = la radice dell'FTP).
+
+name: Pubblica su Aruba
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ftp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./sito/
+          server-dir: ${{ vars.FTP_DIR || './' }}
+          # config.php e i dati scritti dal server non sono nel repository e non vengono toccati

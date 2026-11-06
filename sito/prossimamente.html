@@ -6,8 +6,8 @@
   <title>Mandorle e cereali — TERRE ASPRE</title>
   <meta name="description" content="Accanto all'olio TERRE ASPRE: mandorle in guscio, produzione Italia, già disponibili. Cereali in arrivo: lascia la tua email per saperlo per primo.">
   <link rel="preload" href="assets/fonts/CaviarDreams_Bold.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="assets/style.css?v=23">
-  <script src="assets/app.js?v=23" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=24">
+  <script src="assets/app.js?v=24" defer></script>
 </head>
 <body>
 <header id="site-header"></header>
@@ -47,7 +47,7 @@
           <li>Data di molitura in etichetta</li>
           <li>Formati: <span class="ph">[da definire]</span></li>
         </ul>
-        <form class="notify-form" name="avvisami-cereali" method="POST" data-netlify="true" netlify-honeypot="sito-web">
+        <form class="notify-form" name="avvisami-cereali" method="POST" action="/api/modulo.php" data-modulo>
           <input type="hidden" name="form-name" value="avvisami-cereali">
           <p hidden><label>Non compilare: <input name="sito-web"></label></p>
           <label class="eyebrow" for="email-cereali" style="margin-bottom:8px">Avvisami quando arrivano</label>

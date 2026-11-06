@@ -7,8 +7,8 @@
   <meta name="description" content="TERRE ASPRE Professionale: Coratina da raccolta precoce in bag-in-box da 5 L per ristoranti, gastronomie e laboratori. Listino riservato.">
   <meta name="robots" content="noindex">
   <link rel="preload" href="assets/fonts/CaviarDreams_Bold.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="assets/style.css?v=23">
-  <script src="assets/app.js?v=23" defer></script>
+  <link rel="stylesheet" href="assets/style.css?v=24">
+  <script src="assets/app.js?v=24" defer></script>
 </head>
 <body>
 <header id="site-header"></header>
@@ -37,7 +37,7 @@
         <p class="muted">Il listino professionale è riservato e non è pubblicato sul sito. Scrivici con il consumo stimato: ti rispondiamo con prezzi e condizioni.</p>
       </div>
 
-      <form class="form boxed" name="listino-professionisti" method="POST" data-netlify="true" netlify-honeypot="sito-web" data-ok="Richiesta ricevuta. Ti rispondiamo con listino e condizioni.">
+      <form class="form boxed" name="listino-professionisti" method="POST" action="/api/modulo.php" data-modulo data-ok="Richiesta ricevuta. Ti rispondiamo con listino e condizioni.">
         <input type="hidden" name="form-name" value="listino-professionisti">
         <p hidden><label>Non compilare: <input name="sito-web"></label></p>
         <h3>Richiedi il listino</h3>

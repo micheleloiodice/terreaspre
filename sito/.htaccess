@@ -1,0 +1,21 @@
+# TERRE ASPRE — impostazioni Apache per l'hosting Aruba (Linux).
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Le scorte cambiano a ogni vendita: il browser non le tiene in memoria.
+<Files "scorte.json">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-store"
+  </IfModule>
+</Files>
+
+# Il sito è servito in HTTPS: togli il # dalle tre righe sotto dopo aver attivato il certificato SSL su Aruba.
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

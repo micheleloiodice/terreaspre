@@ -3,5 +3,9 @@
 *.docx
 *.xlsx
 .claude/
-node_modules/
-.netlify/
+
+# Chiavi Stripe ed email: config.php si crea solo sul server
+sito/api/config.php
+# Dati scritti dal server (scorte vive, pagamenti, richieste dai moduli)
+sito/api/dati/*
+!sito/api/dati/.htaccess
