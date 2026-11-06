@@ -17,7 +17,8 @@ py -m http.server 8090 --directory sito
 | `perche.html` | Perché pizzica: le quattro prove e il confronto con l'extravergine generico |
 | `chi-siamo.html` | Il produttore, il luogo come causa agronomica, il nome |
 | `professionisti.html` | 5 L HORECA: nessun prezzo pubblico, modulo di richiesta listino (fuori dal menu, solo nel footer, `noindex`) |
-| `aiuto.html` | Spedizioni, pagamenti, conservazione, FAQ, note legali |
+| `aiuto.html` | Spedizioni, pagamenti, conservazione, FAQ, dati del venditore |
+| `note-legali.html` | Bozza di condizioni di vendita (con recesso), privacy e cookie |
 | `carrello.html` | Carrello con soglia di spedizione gratuita a 35 € e proposta del box sotto soglia; il pulsante apre Stripe Checkout |
 | `grazie.html` | Conferma d'ordine con le istruzioni per il primo assaggio |
 | `mandorle.html` | Mandorle in guscio 250 g (4,50 €) e combo Precoce 500 ml + mandorle (18 €), etichetta «In esaurimento» |
@@ -51,10 +52,10 @@ Tutti i dati modificabili stanno in cima a `sito/assets/app.js`: `SITE` (comune,
 
 ## Da sostituire prima della pubblicazione
 
-1. Comune di molitura, nome del produttore, ragione sociale, P.IVA, email e telefono (`SITE`).
-2. Dati dell'oliveto e del frantoio in `chi-siamo.html`: suolo, ettari, piante, ore fra raccolta e molitura.
-3. Costo di spedizione sotto soglia (ora 6,90 €), corriere, tempi di consegna, supplementi per le isole.
-4. Condizioni di vendita, privacy e cookie policy.
+1. Sede: completare CAP e comune dopo «C.da San Magno» (`SITE.sede` in app.js).
+2. Scorte reali in `sito/scorte.json` (ora numeri di esempio).
+3. Corriere e tempi di consegna (spedizione sotto soglia: 20 €, stesso prezzo in tutta Italia).
+4. Far verificare a un consulente la bozza di condizioni, privacy e cookie in `note-legali.html`, poi togliere la riga «Bozza» e il `noindex`.
 5. Foto e video reali al posto dei segnaposto.
 6. Verifica del dominio e del marchio in classe 29.
 
@@ -62,7 +63,7 @@ Tutti i dati modificabili stanno in cima a `sito/assets/app.js`: `SITE` (comune,
 
 Il carrello manda a `/api/checkout` solo codici prodotto e quantità. La funzione [`netlify/functions/checkout.mjs`](netlify/functions/checkout.mjs) ricalcola i prezzi dal proprio catalogo, controlla le scorte, crea la sessione di pagamento e reindirizza il cliente alla pagina sicura di Stripe. Al termine il cliente torna su `grazie.html`, dove il carrello si svuota.
 
-- **Ordine normale:** modalità `payment`. Spedizione 6,90 € sotto i 35 €, gratuita sopra.
+- **Ordine normale:** modalità `payment`. Spedizione 20 € sotto i 35 €, gratuita sopra (`SITE.costoSpedizione` in app.js e `SPEDIZIONE_CENT` in checkout.mjs).
 - **Dati raccolti da Stripe:** indirizzo di spedizione (solo Italia), telefono per il corriere, email per la ricevuta.
 - Le funzioni chiamano direttamente l'API di Stripe. L'unica dipendenza è `@netlify/blobs` (archivio delle scorte), che Netlify installa da solo leggendo `package.json`.
 - La sessione di pagamento scade dopo 30 minuti, così le scorte controllate al momento del clic restano attendibili.

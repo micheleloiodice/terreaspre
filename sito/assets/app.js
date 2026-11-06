@@ -1,17 +1,15 @@
 /* TERRE ASPRE — dati del sito, carrello e componenti condivisi.
-   Tutti i dati da sostituire (comune, contatti, condizioni) stanno in SITE. */
+   Dati dell'azienda, contatti e spedizione stanno in SITE. */
 
 const SITE = {
   prototipo: true,                       // false = nasconde la barra e l'evidenziazione dei segnaposto
-  comune: "[Comune]",
-  provincia: "BA",
-  produttore: "[Nome e cognome del produttore]",
-  azienda: "[Ragione sociale]",
-  piva: "[P.IVA]",
+  produttore: "Michele Loiodice",
+  azienda: "Michele Loiodice",           // ragione sociale del venditore
+  piva: "P.IVA 08603960728",
+  sede: "C.da San Magno",                // da completare con CAP e comune
   email: "info@terreaspre.com",
-  telefono: "[telefono]",
   sogliaSpedizione: 35,                  // spedizione gratuita da questa cifra (Brand Platform, cap. 7)
-  costoSpedizione: 6.9                   // da confermare con le tariffe corriere
+  costoSpedizione: 20                    // tenere allineato con SPEDIZIONE_CENT in netlify/functions/checkout.mjs
 };
 
 const PRODUCTS = {
@@ -38,8 +36,8 @@ const FOTO = {
                 brief: "Bottiglia di vetro scuro in mano, etichetta in primo piano, luce naturale. Niente fondo bianco." },
   produttore: { file: "produttore.jpg", rapporto: "4/5",  alt: "Il produttore in frantoio con l'olio appena molito",
                 brief: "Il produttore in campo o in frantoio, sguardo sul prodotto, mani e attrezzatura in vista. Niente pose." },
-  suolo:      { file: "suolo.jpg",      rapporto: "16/9", alt: "Suolo calcareo e pietre ai piedi di un olivo",
-                brief: "Suolo calcareo con pietre ai piedi di un tronco d'olivo, luce piena di giorno. Niente tramonto." },
+  oliveto:    { file: "oliveto.jpg",    rapporto: "16/9", alt: "Tronco di un olivo secolare di Coratina",
+                brief: "Tronco di un olivo secolare di Coratina, inquadratura ravvicinata, luce piena di giorno. Niente tramonto." },
   olive:      { file: "olive.jpg",      rapporto: "16/9", alt: "Cassetta di olive verdi appena raccolte",
                 brief: "Cassetta di olive appena raccolte, verdi con poche invaiate. Cartellino con la data visibile." },
   crudo:      { file: "crudo.jpg",      rapporto: "4/3",  alt: "Olio versato a crudo su un piatto di legumi",
@@ -209,7 +207,7 @@ function renderChrome() {
   if (header) {
     header.className = "site-header";
     header.innerHTML = `
-      ${SITE.prototipo ? `<div class="proto-bar">Prototipo — comune, foto, contatti e condizioni sono segnaposto da sostituire</div>` : ""}
+      ${SITE.prototipo ? `<div class="proto-bar">Prototipo — foto in arrivo, testi legali in bozza, pagamenti di prova</div>` : ""}
       <div class="wrap">
         <a class="logo" href="index.html">TERRE ASPRE</a>
         <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -233,7 +231,7 @@ function renderChrome() {
           <div>
             <a class="logo" href="index.html">TERRE ASPRE</a>
             <p class="payoff">L'asprezza è la prova.</p>
-            <p class="small">Olio extravergine di oliva. Coratina monovarietale da raccolta precoce, molita a <span class="ph" data-site="comune"></span> (<span data-site="provincia"></span>).</p>
+            <p class="small">Olio extravergine di oliva. Coratina monovarietale da raccolta precoce. Azienda agricola <span data-site="produttore"></span>.</p>
           </div>
           <div>
             <h4>L'olio</h4>
@@ -259,13 +257,13 @@ function renderChrome() {
               <li><a href="chi-siamo.html">Chi siamo</a></li>
               <li><a href="mandorle.html">Mandorle in guscio</a></li>
               <li><a href="prossimamente.html">In arrivo: cereali</a></li>
-              <li><span class="ph" data-site="email"></span></li>
+              <li><a data-site-mail></a></li>
             </ul>
           </div>
         </div>
         <div class="bottom">
-          <span><span class="ph" data-site="azienda"></span> · <span class="ph" data-site="piva"></span></span>
-          <span><a href="aiuto.html#legale">Condizioni di vendita</a> · <a href="aiuto.html#legale">Privacy</a> · <a href="aiuto.html#legale">Cookie</a></span>
+          <span><span data-site="azienda"></span> · <span data-site="sede"></span> · <span data-site="piva"></span></span>
+          <span><a href="note-legali.html#condizioni">Condizioni di vendita</a> · <a href="note-legali.html#privacy">Privacy</a> · <a href="note-legali.html#cookie">Cookie</a></span>
         </div>
       </div>`;
   }
@@ -288,6 +286,7 @@ function toast(msg) {
 
 /* ---------- Riempimento dati ---------- */
 function bindData(root = document) {
+  root.querySelectorAll("[data-site-mail]").forEach(el => { el.href = `mailto:${SITE.email}`; el.textContent = SITE.email; });
   root.querySelectorAll("[data-site]").forEach(el => {
     const k = el.dataset.site;
     let v = SITE[k];

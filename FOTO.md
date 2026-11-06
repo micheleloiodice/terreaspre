@@ -23,7 +23,7 @@ Ogni foto si salva in `sito/assets/foto/` con il nome indicato. Appena il file c
 | `frantoio.jpg` | 4:5 | Home, «Dal campo alla bottiglia» | Pasta di olive in gramola o al decanter. Attrezzatura vera, durante la lavorazione. |
 | `bottiglia.jpg` | 4:5 | Home, «Dal campo alla bottiglia» | Bottiglia di vetro scuro in mano, etichetta in primo piano, luce naturale. |
 | `produttore.jpg` | 4:5 | Chi siamo | Il produttore in campo o in frantoio, che guarda il prodotto, non l'obiettivo. Niente pose. |
-| `suolo.jpg` | 16:9 | Chi siamo, In arrivo | Suolo calcareo con pietre ai piedi di un tronco d'olivo, luce piena di giorno. |
+| `oliveto.jpg` | 16:9 | Chi siamo, In arrivo | Tronco di un olivo secolare di Coratina, inquadratura ravvicinata, luce piena di giorno. |
 | `olive.jpg` | 16:9 | Perché pizzica | Cassetta di olive appena raccolte, verdi con poche invaiate, con un cartellino che porta la data. |
 | `crudo.jpg` | 4:3 | Precoce, «Come si usa» | Filo d'olio versato a crudo su legumi o verdure, inquadratura stretta. |
 | `bib.jpg` | 4:3 | Quotidiano 3 L | Bag-in-box sul piano di una cucina vera, mano sul rubinetto, olio che scende nel cucchiaio. |
@@ -43,7 +43,7 @@ Formato MP4 orizzontale 16:9, sotto i 10 MB. Per questo slot il riquadro va anco
 ## Una sessione basta
 
 Quasi tutte le foto si fanno in **una giornata di raccolta e molitura**:
-- Mattina in campo: raccolta, olive, suolo, produttore.
+- Mattina in campo: raccolta, olive, oliveto, produttore.
 - Pomeriggio in frantoio: frantoio, colatura, video.
 - Il giorno dopo in cucina: crudo, bib, bottiglia.
 
