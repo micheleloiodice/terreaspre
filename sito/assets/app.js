@@ -8,7 +8,7 @@ const SITE = {
   produttore: "[Nome e cognome del produttore]",
   azienda: "[Ragione sociale]",
   piva: "[P.IVA]",
-  email: "[email ordini]",
+  email: "info@terreaspre.com",
   telefono: "[telefono]",
   sogliaSpedizione: 35,                  // spedizione gratuita da questa cifra (Brand Platform, cap. 7)
   costoSpedizione: 6.9                   // da confermare con le tariffe corriere
