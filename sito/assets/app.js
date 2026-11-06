@@ -6,10 +6,10 @@ const SITE = {
   produttore: "Michele Loiodice",
   azienda: "Michele Loiodice",           // ragione sociale del venditore
   piva: "P.IVA 08603960728",
-  sede: "C.da San Magno",                // da completare con CAP e comune
+  sede: "C.da San Magno, 70033 Corato (BA)",
   email: "info@terreaspre.com",
   sogliaSpedizione: 35,                  // spedizione gratuita da questa cifra (Brand Platform, cap. 7)
-  costoSpedizione: 20                    // tenere allineato con SPEDIZIONE_CENT in netlify/functions/checkout.mjs
+  costoSpedizione: 6.9                   // tenere allineato con SPEDIZIONE_CENT in netlify/functions/checkout.mjs
 };
 
 const PRODUCTS = {

@@ -17,7 +17,7 @@ export const CATALOGO = {
   "combo-mandorle": { nome: "TERRE ASPRE Combo olio + mandorle", descrizione: "Precoce 500 ml + mandorle in guscio 250 g", cent: 1800 }
 };
 export const SOGLIA_GRATUITA_CENT = 3500;
-export const SPEDIZIONE_CENT = 2000;
+export const SPEDIZIONE_CENT = 690;
 const MAX_QTY = 24;
 
 export class ErroreCarrello extends Error {}

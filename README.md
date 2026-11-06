@@ -52,9 +52,8 @@ Tutti i dati modificabili stanno in cima a `sito/assets/app.js`: `SITE` (comune,
 
 ## Da sostituire prima della pubblicazione
 
-1. Sede: completare CAP e comune dopo «C.da San Magno» (`SITE.sede` in app.js).
 2. Scorte reali in `sito/scorte.json` (ora numeri di esempio).
-3. Corriere e tempi di consegna (spedizione sotto soglia: 20 €, stesso prezzo in tutta Italia).
+3. Corriere e tempi di consegna (spedizione sotto soglia: 6,90 €, stesso prezzo in tutta Italia).
 4. Far verificare a un consulente la bozza di condizioni, privacy e cookie in `note-legali.html`, poi togliere la riga «Bozza» e il `noindex`.
 5. Foto e video reali al posto dei segnaposto.
 6. Verifica del dominio e del marchio in classe 29.
@@ -63,7 +62,7 @@ Tutti i dati modificabili stanno in cima a `sito/assets/app.js`: `SITE` (comune,
 
 Il carrello manda a `/api/checkout` solo codici prodotto e quantità. La funzione [`netlify/functions/checkout.mjs`](netlify/functions/checkout.mjs) ricalcola i prezzi dal proprio catalogo, controlla le scorte, crea la sessione di pagamento e reindirizza il cliente alla pagina sicura di Stripe. Al termine il cliente torna su `grazie.html`, dove il carrello si svuota.
 
-- **Ordine normale:** modalità `payment`. Spedizione 20 € sotto i 35 €, gratuita sopra (`SITE.costoSpedizione` in app.js e `SPEDIZIONE_CENT` in checkout.mjs).
+- **Ordine normale:** modalità `payment`. Spedizione 6,90 € sotto i 35 €, gratuita sopra (`SITE.costoSpedizione` in app.js e `SPEDIZIONE_CENT` in checkout.mjs).
 - **Dati raccolti da Stripe:** indirizzo di spedizione (solo Italia), telefono per il corriere, email per la ricevuta.
 - Le funzioni chiamano direttamente l'API di Stripe. L'unica dipendenza è `@netlify/blobs` (archivio delle scorte), che Netlify installa da solo leggendo `package.json`.
 - La sessione di pagamento scade dopo 30 minuti, così le scorte controllate al momento del clic restano attendibili.
