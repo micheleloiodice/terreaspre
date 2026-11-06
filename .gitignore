@@ -1,0 +1,7 @@
+# Documenti riservati di progetto: restano in locale, non vanno nel repository
+*.pdf
+*.docx
+*.xlsx
+.claude/
+node_modules/
+.netlify/

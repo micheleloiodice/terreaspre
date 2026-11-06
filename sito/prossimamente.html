@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mandorle e cereali — TERRE ASPRE</title>
+  <meta name="description" content="Accanto all'olio TERRE ASPRE: mandorle in guscio, produzione Italia, già disponibili. Cereali in arrivo: lascia la tua email per saperlo per primo.">
+  <link rel="preload" href="assets/fonts/CaviarDreams_Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/style.css?v=23">
+  <script src="assets/app.js?v=23" defer></script>
+</head>
+<body>
+<header id="site-header"></header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap grid-2">
+      <div>
+        <p class="eyebrow">In arrivo</p>
+        <h1>Dalle stesse terre.</h1>
+        <p class="lead">Accanto all'olio, le mandorle in guscio sono già disponibili. I cereali arrivano con la stessa regola dell'olio: varietà dichiarata, coltivazione indicata.</p>
+      </div>
+      <figure data-foto="suolo"></figure>
+    </div>
+  </section>
+
+  <section class="paper-2 section" id="mandorle">
+    <div class="wrap grid-2">
+      <figure data-foto="mandorle"></figure>
+      <div>
+        <span class="stock esaurimento" data-stock="mandorle-250">In esaurimento</span>
+        <h2 style="margin-top:16px">Mandorle in guscio: ci sono già.</h2>
+        <p>Sacchetto da 250 g a <span data-price="mandorle-250"></span>, oppure in combo con il Precoce 500 ml a <span data-price="combo-mandorle"></span>, IVA inclusa. Produzione Italia.</p>
+        <a class="btn" href="mandorle.html">Vai alle mandorle</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cereali">
+    <div class="wrap grid-2" style="align-items:start">
+      <div>
+        <span class="eyebrow">In preparazione</span>
+        <h2>Cereali</h2>
+        <p>Grano duro <span class="ph">[varietà]</span> coltivato sugli stessi suoli, in asciutto. Ne faremo <span class="ph">[semola / pasta / farina: da definire]</span>, con molitura datata.</p>
+        <ul class="check-list" style="margin:24px 0 32px">
+          <li>Varietà dichiarata, campo di provenienza indicato</li>
+          <li>Data di molitura in etichetta</li>
+          <li>Formati: <span class="ph">[da definire]</span></li>
+        </ul>
+        <form class="notify-form" name="avvisami-cereali" method="POST" data-netlify="true" netlify-honeypot="sito-web">
+          <input type="hidden" name="form-name" value="avvisami-cereali">
+          <p hidden><label>Non compilare: <input name="sito-web"></label></p>
+          <label class="eyebrow" for="email-cereali" style="margin-bottom:8px">Avvisami quando arrivano</label>
+          <div class="notify">
+            <input id="email-cereali" type="email" name="email" required placeholder="La tua email" autocomplete="email">
+            <button class="btn" type="submit">Avvisami</button>
+          </div>
+          <label class="consent"><input type="checkbox" name="consenso" value="si" required> Acconsento a ricevere una sola email quando i cereali sono disponibili. <a href="aiuto.html#legale">Privacy</a></label>
+          <p class="form-msg" role="status"></p>
+        </form>
+      </div>
+      <figure data-foto="grano"></figure>
+    </div>
+  </section>
+
+  <section class="dark section-tight">
+    <div class="wrap grid-2">
+      <div>
+        <h2>Intanto, l'olio.</h2>
+        <p class="lead">Coratina 100% da raccolta precoce, in vetro scuro o bag-in-box.</p>
+      </div>
+      <div class="btn-row" style="justify-content:flex-end">
+        <a class="btn" href="precoce.html">Scegli il formato</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+</body>
+</html>

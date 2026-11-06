@@ -1,0 +1,12 @@
+{
+  "nota": "Base delle scorte. Le vendite le scalano da sole. Per un rifornimento o una correzione: scrivi i numeri giusti e AUMENTA versione di 1, altrimenti il file viene ignorato. Valori di ESEMPIO su circa 430 litri.",
+  "versione": 1,
+  "sogliaPochi": 10,
+  "prodotti": {
+    "precoce-250": 80,
+    "precoce-500": 400,
+    "precoce-box": 40,
+    "quotidiano-3l": 50,
+    "mandorle-250": 28
+  }
+}

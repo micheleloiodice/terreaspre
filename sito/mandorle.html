@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mandorle in guscio — TERRE ASPRE</title>
+  <meta name="description" content="Mandorle in guscio, produzione Italia. Sacchetto da 250 g o in combo con l'olio TERRE ASPRE Precoce 500 ml. In esaurimento.">
+  <link rel="preload" href="assets/fonts/CaviarDreams_Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/style.css?v=23">
+  <script src="assets/app.js?v=23" defer></script>
+</head>
+<body>
+<header id="site-header"></header>
+
+<main class="wrap">
+  <div class="pdp">
+    <div class="pdp-art kraft" data-pdp-art></div>
+
+    <div>
+      <p class="eyebrow">In guscio · Produzione Italia</p>
+      <h1>Mandorle in guscio</h1>
+      <p class="lead">Produzione Italia.</p>
+
+      <form data-buy>
+        <fieldset class="options">
+          <legend>Formato</legend>
+          <label class="opt">
+            <input type="radio" name="sku" value="mandorle-250" checked>
+            <span><span class="name">Sacchetto 250 g</span><br><span class="meta">Mandorle in guscio</span> <span data-stock="mandorle-250" hidden></span></span>
+            <span class="p"><span data-price="mandorle-250"></span><small data-unit="mandorle-250"></small></span>
+          </label>
+          <label class="opt" id="combo">
+            <input type="radio" name="sku" value="combo-mandorle">
+            <span><span class="name">Combo olio + mandorle</span><br><span class="meta">Precoce 500 ml + mandorle in guscio 250 g</span> <span data-stock="combo-mandorle" hidden></span></span>
+            <span class="p"><span data-price="combo-mandorle"></span><small data-unit="combo-mandorle"></small></span>
+          </label>
+        </fieldset>
+
+        <div class="buy-row">
+          <div class="qty">
+            <button type="button" data-step="-1" aria-label="Diminuisci">−</button>
+            <input type="number" name="qty" value="1" min="1" max="24" aria-label="Quantità">
+            <button type="button" data-step="1" aria-label="Aumenta">+</button>
+          </div>
+          <button class="btn" type="submit">Aggiungi al carrello</button>
+        </div>
+        <p class="ship-note">Spedizione gratuita da <span data-site="sogliaSpedizione"></span>, altrimenti <span class="ph" data-site="costoSpedizione"></span>. Si spediscono insieme all'olio.</p>
+      </form>
+
+      <div class="details">
+        <details open>
+          <summary>Perché in guscio</summary>
+          <div class="body">
+            <figure data-foto="mandorle" style="margin-bottom:16px"></figure>
+            <p>Il guscio protegge il seme dall'aria e dalla luce, come il vetro scuro protegge l'olio. Si sgusciano al momento, quando servono.</p>
+          </div>
+        </details>
+        <details>
+          <summary>La combo</summary>
+          <div class="body">
+            <p>Una bottiglia di Precoce 500 ml e un sacchetto di mandorle in guscio da 250 g, produzione Italia. In un solo pacco.</p>
+            <p>La combo dura finché ci sono le mandorle.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Conservazione</summary>
+          <div class="body">
+            <p>In un luogo fresco e asciutto, al riparo dalla luce, nel loro sacchetto chiuso.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+</body>
+</html>

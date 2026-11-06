@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ristorazione e professionisti — TERRE ASPRE</title>
+  <meta name="description" content="TERRE ASPRE Professionale: Coratina da raccolta precoce in bag-in-box da 5 L per ristoranti, gastronomie e laboratori. Listino riservato.">
+  <meta name="robots" content="noindex">
+  <link rel="preload" href="assets/fonts/CaviarDreams_Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/style.css?v=23">
+  <script src="assets/app.js?v=23" defer></script>
+</head>
+<body>
+<header id="site-header"></header>
+
+<main>
+  <section class="dark page-head">
+    <div class="wrap narrow">
+      <p class="eyebrow">TERRE ASPRE Professionale</p>
+      <h1>Per chi cucina ogni giorno.</h1>
+      <p class="lead">Coratina 100% da raccolta precoce in bag-in-box da 5 litri. Profilo costante, olio protetto dall'aria fino all'ultimo servizio.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid-2" style="align-items:start">
+      <div>
+        <figure data-foto="horeca" style="margin-bottom:32px"></figure>
+        <h2>Cosa ricevi</h2>
+        <ul class="check-list" style="margin-bottom:32px">
+          <li>Bag-in-box da 5 L con rubinetto dosatore</li>
+          <li>Scheda tecnica del prodotto</li>
+          <li>Riserva sulla campagna successiva</li>
+          <li>Materiale per la sala: la scheda del prodotto da mostrare ai clienti</li>
+          <li>Fattura elettronica</li>
+        </ul>
+        <p class="muted">Il listino professionale è riservato e non è pubblicato sul sito. Scrivici con il consumo stimato: ti rispondiamo con prezzi e condizioni.</p>
+      </div>
+
+      <form class="form boxed" name="listino-professionisti" method="POST" data-netlify="true" netlify-honeypot="sito-web" data-ok="Richiesta ricevuta. Ti rispondiamo con listino e condizioni.">
+        <input type="hidden" name="form-name" value="listino-professionisti">
+        <p hidden><label>Non compilare: <input name="sito-web"></label></p>
+        <h3>Richiedi il listino</h3>
+        <div class="two">
+          <label>Nome e cognome<input name="nome" required autocomplete="name"></label>
+          <label>Attività<input name="attivita" required autocomplete="organization"></label>
+        </div>
+        <div class="two">
+          <label>Tipo
+            <select name="tipo">
+              <option>Ristorante</option>
+              <option>Gastronomia o bottega</option>
+              <option>Laboratorio o forno</option>
+              <option>Altro</option>
+            </select>
+          </label>
+          <label>Città<input name="citta" required autocomplete="address-level2"></label>
+        </div>
+        <div class="two">
+          <label>Email<input type="email" name="email" required autocomplete="email"></label>
+          <label>Consumo al mese
+            <select name="consumo">
+              <option>Fino a 10 L</option>
+              <option>10–30 L</option>
+              <option>Oltre 30 L</option>
+            </select>
+          </label>
+        </div>
+        <label>Note<textarea name="note" placeholder="Uso principale, frequenza di consegna, domande"></textarea></label>
+        <button class="btn" type="submit">Invia la richiesta</button>
+        <p class="small muted" style="margin:0">Usiamo questi dati solo per risponderti. <a href="aiuto.html#legale">Privacy</a></p>
+        <p class="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+</body>
+</html>
